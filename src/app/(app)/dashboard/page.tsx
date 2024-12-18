@@ -1,9 +1,10 @@
-'use client'
+
 
 function page() {
 
+
     return (
-        <div>dashboard</div>
+        <div>this is dashboard</div>
     )
 }
 
