@@ -1,6 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
-import { Message } from "@/model/User";
+import { IMessage } from "@/model/User";
 
 export async function POST(request: Request) {
     await dbConnect();
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
             )
         }
         const newMessage = { content, createdAt: new Date() }
-        user.messages.push(newMessage as Message);
+        user.messages.push(newMessage as IMessage);
         await user.save();
         return Response.json(
             {
