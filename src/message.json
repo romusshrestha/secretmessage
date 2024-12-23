@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Message from Z",
+    "content": "Interesting book or movie lately?",
+    "received": "just a moment ago"
+  },
+  {
+    "title": "Message from Person X",
+    "content": "Skill you'd learn instantly?",
+    "received": "3 minutes ago"
+  },
+  {
+    "title": "Message from Tester",
+    "content": "Hey, how are you doing today?",
+    "received": "10 minutes ago"
+  },
+  {
+    "title": "Message from User 2",
+    "content": "What's your 2024 highlight?",
+    "received": "1 hours ago"
+  },
+  {
+    "title": "Message from User",
+    "content": "I really liked your recent post!",
+    "received": "2 hours ago"
+  },
+  {
+    "title": "Message from Person",
+    "content": "Where did you travel recently?",
+    "received": "1 day ago"
+  }
+]

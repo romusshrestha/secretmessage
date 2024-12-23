@@ -21,10 +21,11 @@ export async function POST(request: Request) {
     const { acceptMessages } = await request.json();
 
     try {
+        console.log('status from api', acceptMessages);
         // Update the user's message acceptance status
         const updatedUser = await UserModel.findByIdAndUpdate(
             userId,
-            { isAcceptingMessages: acceptMessages },
+            { isAcceptingMessage: acceptMessages },
             { new: true }
         );
 
@@ -78,7 +79,6 @@ export async function GET(request: Request) {
     try {
 
         const foundUser = await UserModel.findById(userId);
-        console.log("Found user: ", foundUser);
         if (!foundUser) {
             return Response.json(
                 {

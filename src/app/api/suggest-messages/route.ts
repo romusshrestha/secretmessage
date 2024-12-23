@@ -9,8 +9,13 @@ export async function POST(req: NextRequest): Promise<Response> {
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-        const prompt: string = "Create a list of three open-ended and engaging questions formatted as a single string. Each question should be separated by '||'. These questions are for an anonymous social messaging platform, like Qooh.me. Avoid personal or sensitive topics, focusing instead on universal themes that encourage friendly interaction. For example, your output should be structured like this: 'What’s a hobby you’ve recently started?||If you could have dinner with any historical figure, who would it be?||What’s a simple thing that makes you happy?'. Ensure the questions are intriguing, foster curiosity, and contribute to a positive and welcoming conversational environment. Make sure the questions are always random even with the same prompt";
+        const prompt: string = "Create a list of three open-ended and engaging questions formatted as a single string. Each question should be separated by '||'. These questions are for an anonymous social messaging platform, like Qooh.me. Avoid personal or sensitive topics, focusing instead on universal themes that encourage friendly interaction. For example, your output should be structured like this: 'What’s a hobby you’ve recently started?||If you could have dinner with any historical figure, who would it be?||What’s a simple thing that makes you happy?'. Ensure the questions are intriguing, foster curiosity, and contribute to a positive and welcoming conversational environment. Make sure the questions are always random even with the same prompt.";
+        const prompt2: string = "Generate a list of three unique, open-ended, and engaging questions formatted as a single string. Separate each question with '||'. These questions are for an anonymous social messaging platform, like Qooh.me, and should focus on universal, lighthearted themes that encourage friendly interaction. Ensure the questions are varied and imaginative, avoiding repetition or overly similar ideas. Include elements of randomness, so the output is different each time, even with the same prompt. For example, your output could be structured like this: 'What’s an interesting place you’d like to visit and why?||What’s a fun fact about something you’ve recently learned?||If you could master any skill instantly, what would it be?'. Make sure the questions foster curiosity, are non-sensitive, and contribute to a positive and welcoming environment."
 
+        function selectRandomPrompt() {
+            const randomNumber = Math.random();
+            return randomNumber < 0.5 ? prompt : prompt2
+        }
         const res = await model.generateContent(
             {
                 contents: [
@@ -18,14 +23,14 @@ export async function POST(req: NextRequest): Promise<Response> {
                         role: "user",
                         parts: [
                             {
-                                text: prompt,
+                                text: selectRandomPrompt(),
                             }
                         ],
                     },
                 ],
                 generationConfig: {
                     maxOutputTokens: 400,
-                    temperature: 0.9,
+                    temperature: 1.0,
                 }
             }
         );
@@ -34,7 +39,7 @@ export async function POST(req: NextRequest): Promise<Response> {
             return NextResponse.json(
                 {
                     success: true,
-                    generatedResult: res.response.text(),
+                    messages: res.response.text(),
 
                 },
                 {
