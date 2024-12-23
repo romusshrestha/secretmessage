@@ -5,13 +5,13 @@ import { User } from 'next-auth';
 import { NextRequest } from 'next/server';
 import { authOptions } from '../../auth/[...nextauth]/options';
 
+type Params= Promise<{messageid:string;}>
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { messageid: string; } }
+    { params }: { params: Params }
 ) {
-    if (typeof params.messageid !== 'string')
-        return new Response('Invalid messageId', { status: 400 });
-    const messageId = params.messageid;
+    
+    const {messageid}= await params;
     await dbConnect();
     const session = await getServerSession(authOptions);
     const _user: User = session?.user as User;
@@ -25,7 +25,7 @@ export async function DELETE(
     try {
         const updateResult = await UserModel.updateOne(
             { _id: _user._id },
-            { $pull: { messages: { _id: messageId } } }
+            { $pull: { messages: { _id: messageid } } }
         );
 
         if (updateResult.modifiedCount === 0) {
@@ -36,7 +36,7 @@ export async function DELETE(
         }
 
         return Response.json(
-            { message: 'Message deleted', success: true },
+            { message: 'Message del', success: true },
             { status: 200 }
         );
     } catch (error) {
