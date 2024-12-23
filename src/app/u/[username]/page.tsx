@@ -25,6 +25,7 @@ const initialMessageString = "What's your favorite movie?||Do you have any pets?
 
 function SendMessage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuggestLoading, setIsSuggestLoading] = useState(false);
     const { toast } = useToast();
 
     const params = useParams<{ username: string }>();
@@ -36,7 +37,7 @@ function SendMessage() {
     });
 
     //getting suggested message from api
-    const { completion, setCompletion, isLoading: isSuggestLoading } = useCompletion({
+    const { completion, setCompletion, } = useCompletion({
         initialCompletion: initialMessageString,
 
     })
@@ -90,10 +91,12 @@ function SendMessage() {
     const fetchSuggestedMessage = async () => {
         try {
 
+            setIsSuggestLoading(true);
             // complete('');
             const message = await axios.post<ApiResponse>(`/api/suggest-messages`);
 
             setCompletion(String(message.data.messages));
+            setIsSuggestLoading(false);
 
         } catch (error) {
             console.error("Error in fetching suggested message: ", error)
@@ -160,14 +163,22 @@ function SendMessage() {
             >
                 <div
                     className="space-y-2"
+                >{isSuggestLoading ? 
+                <Button
+                    className="my-4"
+                    onClick={fetchSuggestedMessage}
+                    disabled={isSuggestLoading}
                 >
-                    <Button
-                        className="my-4"
-                        onClick={fetchSuggestedMessage}
-                        disabled={isSuggestLoading}
-                    >
-                        AI Message Suggestion
-                    </Button>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <p className="animate-pulse">Generating...</p>
+                </Button> : <Button
+                    className="my-4"
+                    onClick={fetchSuggestedMessage}
+                    disabled={isSuggestLoading}
+                >
+                    AI Message Suggestion
+                </Button>}
+
                     <p>
                         Click on any message below to select it.
                     </p>
