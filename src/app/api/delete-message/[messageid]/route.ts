@@ -1,3 +1,4 @@
+import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
@@ -5,22 +6,23 @@ import UserModel from "@/model/User";
 import { User } from "next-auth";
 
 export async function DELETE(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { messageid: string } }
 ) {
-  const messageId = params.messageid;
+  const { messageid: messageId } = params;
+
   await dbConnect();
 
   const session = await getServerSession(authOptions);
   const user = session?.user as User;
 
   if (!session || !session.user) {
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json(
+      {
         success: false,
         message: "Not Authenticated",
-      }),
-      { status: 401, headers: { "Content-Type": "application/json" } }
+      },
+      { status: 401 }
     );
   }
 
@@ -31,31 +33,31 @@ export async function DELETE(
     );
 
     if (result.modifiedCount === 0) {
-      return new Response(
-        JSON.stringify({
+      return NextResponse.json(
+        {
           success: false,
           message: "Message not found or already deleted",
-        }),
-        { status: 404, headers: { "Content-Type": "application/json" } }
+        },
+        { status: 404 }
       );
     }
 
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json(
+      {
         success: true,
         message: "Message deleted",
-      }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
+      },
+      { status: 200 }
     );
   } catch (error) {
     console.error("Error deleting message:", error);
 
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json(
+      {
         success: false,
         message: "Error deleting message",
-      }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
+      },
+      { status: 500 }
     );
   }
 }
