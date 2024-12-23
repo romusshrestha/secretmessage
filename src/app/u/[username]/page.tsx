@@ -52,7 +52,7 @@ function SendMessage() {
                 })
             console.log("Response: ", response.data)
             toast({
-                title: response.data.messages,
+                title: String(response.data.messages),
                 variant: "default"
             })
             form.reset({
@@ -61,18 +61,18 @@ function SendMessage() {
             });
         } catch (error) {
             const axiosError = error as AxiosError<ApiResponse>;
-            let errorMessage = axiosError.response?.data.messages;
+            const errorMessage = axiosError.response?.data.messages;
             if (axiosError.response?.status === 403) {
                 toast({
                     title: 'Unable to send ',
-                    description: errorMessage,
+                    description: String(errorMessage),
                     variant: "default"
                 })
             }
             else {
                 toast({
                     title: 'Error',
-                    description: errorMessage,
+                    description: String(errorMessage),
                     variant: "destructive"
                 })
             }
