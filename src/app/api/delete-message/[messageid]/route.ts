@@ -15,12 +15,12 @@ export async function DELETE(
   const user = session?.user as User;
 
   if (!session || !session.user) {
-    return Response.json(
-      {
+    return new Response(
+      JSON.stringify({
         success: false,
         message: "Not Authenticated",
-      },
-      { status: 401 }
+      }),
+      { status: 401, headers: { "Content-Type": "application/json" } }
     );
   }
 
@@ -31,32 +31,31 @@ export async function DELETE(
     );
 
     if (result.modifiedCount === 0) {
-      return Response.json(
-        {
+      return new Response(
+        JSON.stringify({
           success: false,
           message: "Message not found or already deleted",
-        },
-        { status: 404 }
+        }),
+        { status: 404, headers: { "Content-Type": "application/json" } }
       );
     }
 
-    return Response.json(
-      {
+    return new Response(
+      JSON.stringify({
         success: true,
         message: "Message deleted",
-      },
-      { status: 200 }
+      }),
+      { status: 200, headers: { "Content-Type": "application/json" } }
     );
-
   } catch (error) {
     console.error("Error deleting message:", error);
 
-    return Response.json(
-      {
+    return new Response(
+      JSON.stringify({
         success: false,
         message: "Error deleting message",
-      },
-      { status: 500 }
+      }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
 }
