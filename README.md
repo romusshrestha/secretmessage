@@ -24,7 +24,7 @@ Check out the live application here: [Secret Message](https://secretmessage-sigm
 1.  Clone the repository:
 
     ```bash
-    git clone [https://github.com/steins07/secretmessage.git](https://github.com/steins07/secretmessage.git)
+    git clone https://github.com/steins07/secretmessage.git
     cd secretmessage
     ```
 2.  Install dependencies:
