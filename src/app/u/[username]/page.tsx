@@ -126,7 +126,7 @@ function SendMessage() {
                         control={form.control}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-semibold text-lg">Your Secret Message</FormLabel>
+                                <FormLabel className="text-semibold text-lg">Your Secret Message for <span className="bg-black text-white rounded-sm p-0.5 animate-pulse delay-1000">@{username}</span></FormLabel>
                                 <FormControl>
                                     <Textarea
                                         placeholder="Write your anonymous message here"

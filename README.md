@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Secret Message
 
-## Getting Started
+Secret Message is a platform for asking and answering questions anonymously. It's built using modern web technologies to ensure a seamless and secure experience.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*   **Next.js:** Fast, server-rendered React application framework.
+*   **Authentication:** Secure user authentication powered by NextAuth.js.
+*   **Email Verification:** Send verification emails using Resend.
+*   **Tailwind CSS:** Modern utility-first CSS framework for responsive styling.
+*   **React Hook Form:** Manage form state and validation with ease.
+*   **Zod:** Schema-based validation for forms and inputs.
+*   **MongoDB:** NoSQL database for storing user data and questions.
+*   **Gemini AI:** Generate intelligent and context-aware questions automatically.
+*   **Hosting:** Hosted on Vercel for lightning-fast performance.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Check out the live application here: [Secret Message](https://secretmessage-sigma-flame.vercel.app/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1.  Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    git clone [https://github.com/yourusername/secretmessage.git](https://github.com/yourusername/secretmessage.git)
+    cd secretmessage
+    ```
+2.  Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    npm install
+    ```
+3.  Set up environment variables:
+    *   Create a `.env.local` file in the root of your project and add the following:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    # MongoDB connection
+    MONGODB_URI=<your_mongodb_connection_string>
 
-## Deploy on Vercel
+    # NextAuth configuration
+    NEXTAUTH_SECRET=<your_nextauth_secret>
+   
+    # Resend API Key
+    RESEND_API_KEY=<your_resend_api_key>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    # Gemini AI API Key
+    GEMINI_API_KEY=<your_gemini_api_key>
+    ```
+4.  Start the development server:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    npm run dev
+    ```
+5.  Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Technologies Used
+
+*   **Frontend:** Next.js, React, Tailwind CSS
+*   **Authentication:** NextAuth.js
+*   **Email:** Resend
+*   **Form Management:** React Hook Form, Zod
+*   **Database:** MongoDB (via Mongoose)
+*   **AI:** Gemini AI for question generation
+*   **Hosting:** Vercel
+
