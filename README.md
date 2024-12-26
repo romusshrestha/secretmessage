@@ -8,6 +8,7 @@ Secret Message is a platform for asking and answering questions anonymously. It'
 *   **Authentication:** Secure user authentication powered by NextAuth.js.
 *   **Email Verification:** Send verification emails using Resend.
 *   **Tailwind CSS:** Modern utility-first CSS framework for responsive styling.
+*   **Shadcn:** Modern ui for the application.
 *   **React Hook Form:** Manage form state and validation with ease.
 *   **Zod:** Schema-based validation for forms and inputs.
 *   **MongoDB:** NoSQL database for storing user data and questions.
@@ -56,7 +57,7 @@ Check out the live application here: [Secret Message](https://secretmessage-sigm
 
 ## Technologies Used
 
-*   **Frontend:** Next.js, React, Tailwind CSS
+*   **Frontend:** Next.js, React, Tailwind CSS, Shadcn/ui
 *   **Authentication:** NextAuth.js
 *   **Email:** Resend
 *   **Form Management:** React Hook Form, Zod
