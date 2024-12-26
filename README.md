@@ -2,6 +2,9 @@
 
 Secret Message is a platform for asking and answering questions anonymously. It's built using modern web technologies to ensure a seamless and secure experience.
 
+## Project Demo
+
+Check out the live application here: [Secret Message](https://secretmessage-sigma-flame.vercel.app/)
 ## Features
 
 *   **Next.js:** Fast, server-rendered React application framework.
@@ -15,9 +18,6 @@ Secret Message is a platform for asking and answering questions anonymously. It'
 *   **Gemini AI:** Generate intelligent and context-aware questions automatically.
 *   **Hosting:** Hosted on Vercel for lightning-fast performance.
 
-## Project Demo
-
-Check out the live application here: [Secret Message](https://secretmessage-sigma-flame.vercel.app/)
 
 ## Installation
 
