@@ -16,8 +16,11 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Srct Msg",
+  title: "Secret Msg",
   description: "app to send secret messages",
+  icons: {
+    icon: "/logor.ico",
+  },
 };
 
 export default function RootLayout({

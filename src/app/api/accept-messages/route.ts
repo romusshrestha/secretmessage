@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 
     const userId = user._id;
     const { acceptMessages } = await request.json();
-
+    
     try {
         console.log('status from api', acceptMessages);
         // Update the user's message acceptance status
